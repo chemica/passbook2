@@ -3,14 +3,18 @@ require 'spec_helper'
 describe 'Signer'  do
   context 'signatures' do
 
+    let(:private_key_path) { File.join(gem_root, '/spec/fixtures/rsa_private_key.key') }
+    let(:apple_intermediate_cert_path) { File.join(gem_root, '/spec/fixtures/apple_intermediate_cert.cer') }
+    let(:certificate_path) { File.join(gem_root, '/spec/fixtures/certificate.cer') }
+
     context 'using default config info' do
       before do
         expect(Passbook).to(receive(:password).and_return 'password')
-        expect(Passbook).to(receive(:rsa_private_key).and_return 'my_rsa_key')
-        expect(Passbook).to(receive(:certificate).and_return 'my_X509_certificate')
+        expect(Passbook).to(receive(:rsa_private_key).and_return private_key_path)
+        expect(Passbook).to(receive(:certificate).and_return certificate_path)
         expect(Passbook).to(
           receive(:apple_intermediate_cert)
-            .and_return( 'apple_intermediate_cert_file')
+            .and_return(apple_intermediate_cert_path)
         )
       end
 
@@ -25,13 +29,13 @@ describe 'Signer'  do
             Passbook::Signer.new
           }
           it "should contain rsa_private_key" do
-            expect(signer.rsa_private_key).to(eq('my_rsa_key'))
+            expect(signer.rsa_private_key).to(eq(private_key_path))
           end
           it "should contain certificate" do
-            expect(signer.certificate).to(eq('my_X509_certificate'))
+            expect(signer.certificate).to(eq(certificate_path))
           end
           it "should contain apple_intermediate_cert" do
-            expect(signer.apple_intermediate_cert).to(eq('apple_intermediate_cert_file'))
+            expect(signer.apple_intermediate_cert).to(eq(apple_intermediate_cert_path))
           end
           it "should contain password" do
             expect(signer.password).to(eq('password'))

@@ -1,6 +1,16 @@
 # CHANGELOG
 
-## v1.0
+## v0.6.1
+### High level changes 
+- Fix initializer to match README instructions
+
+## Breaking code changes
+(breaking from v0.5.1)
+
+- Updated the signer so the initializer reads file paths instead of expecting the whole certificate or key.
+
+
+## v0.5.1
 ### High level changes 
 - released as a new gem called passbook2
   maintains the Passbook namespace because passbook2 replaces passbook and you shouldn't have to type 2 all the time. 😉
@@ -13,8 +23,7 @@
 ## Breaking code changes
 (breaking from the the pre-release version of this fork)
 
-
-- removed depricated methods in `PKPass` 
+- removed deprecated methods in `PKPass` 
   - `json=(json)`
 - changed public method names
   - `addFile` → `add_file`

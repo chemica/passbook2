@@ -58,6 +58,8 @@ module Passbook
       Base64.decode64(pk7_data)
     end
 
+    private
+
     def compute_cert
       @key_hash = {
         rsa_private_key: OpenSSL::PKey::RSA.new(file_data(rsa_private_key), password),
@@ -67,7 +69,6 @@ module Passbook
 
     def file_data(data)
       raise "file_data passed nil" if data.nil?
-      return data if data.is_a? String
 
       data.respond_to?(:read) ? data.read : File.read(data)
     end
