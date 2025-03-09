@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## v0.6.1
+## v1.1.0
 ### High level changes 
 - Fix initializer to match README instructions
 
@@ -10,7 +10,7 @@
 - Updated the signer so the initializer reads file paths instead of expecting the whole certificate or key.
 
 
-## v0.5.1
+## v1.0.0
 ### High level changes 
 - released as a new gem called passbook2
   maintains the Passbook namespace because passbook2 replaces passbook and you shouldn't have to type 2 all the time. 😉
